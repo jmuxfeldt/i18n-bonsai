@@ -1,0 +1,53 @@
+{
+  "account": {
+    "login": "iniciar sesión",
+    "login-apple": "Inicio de sesión en Apple",
+    "password": "contraseña",
+    "username": "nombre de usuario"
+  },
+  "applestore": {
+    "annual": "Suscripción Anual Premium",
+    "annual-descr": "Desbloquea funciones premium por 1 año",
+    "monthly": "Suscripción Mensual Premium",
+    "monthly-desc": "Desbloquea funciones premium por 1 mes"
+  },
+  "backups": {
+    "autobackups": "Respaldo (haz clic para restaurar)",
+    "backup-device-data": "Respaldo de Datos del Dispositivo",
+    "backups": "Respaldo",
+    "cloud-deleted": "Eliminados {0} registros de la nube",
+    "count-deletions": "eliminaciones",
+    "days": "{0} días",
+    "delete-all": "Eliminar todo",
+    "delete-all-data": "Eliminar datos del dispositivo y la nube",
+    "delete-and-import": "Eliminar e Importar",
+    "delete-backup": "Eliminar Archivo de Respaldo",
+    "delete-cloud-data": "Eliminar datos de la nube",
+    "delete-local-data": "Eliminar datos del dispositivo",
+    "deleted": "eliminado",
+    "do-full-sync": "Realizar Sincronización Completa Ahora",
+    "import-overwrites-data": "Restaurar o importar datos sobrescribirá todos los datos locales",
+    "last-backup": "Última Copia de Seguridad: {0}",
+    "no-delete-cloud-records": "no hay registros en la nube para eliminar",
+    "now": "respaldar ahora",
+    "please_wait": "... por favor espera",
+    "purge-oudated": "Eliminar eliminaciones obsoletas de la nube",
+    "range": "mantén copias de seguridad",
+    "really-delete--all-backups": "¿Realmente eliminar todas las copias de seguridad?",
+    "really-delete-all-data": "¿Realmente eliminar todos los datos del dispositivo y la nube?",
+    "really-delete-backup": "¿Realmente eliminar copia de seguridad?",
+    "really-delete-cloud-data": "¿Realmente eliminar datos de la nube?",
+    "really-delete-local-data": "¿Realmente eliminar datos del dispositivo?\nSi la sincronización está activa, los datos de la nube se recuperarán después de eliminar.",
+    "really-sync-from-cloud": "¿Realmente sincronizar todo desde la nube al dispositivo?",
+    "really-sync-to-cloud": "¿Realmente sincronizar todo desde el dispositivo a la nube?",
+    "requires-internet-syncing": "requiere internet/sincronización",
+    "share-backup": "Compartir/Descargar archivo de respaldo",
+    "stats": "estadísticas",
+    "sync-queue": "Tabla de Sincronización",
+    "syncing-interrupted": "La sincronización actual fue interrumpida",
+    "syncing-tools": "Herramientas de Sincronización",
+    "upserts": "upserts",
+    "use-file-browser": "Importar usando el explorador de archivos",
+    "user-prefs": "Preferencias-Usuario"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "account": {
+    "login": "accesso",
+    "login-apple": "Accesso Account Apple",
+    "password": "password",
+    "username": "nome utente"
+  },
+  "applestore": {
+    "annual": "Abbonamento Annuale Premium",
+    "annual-descr": "Sblocca funzioni premium per 1 anno",
+    "monthly": "Abbonamento Mensile Premium",
+    "monthly-desc": "Sblocca funzioni premium per 1 mese"
+  },
+  "backups": {
+    "autobackups": "Backup (clicca per ripristinare)",
+    "backup-device-data": "Backup Dati Dispositivo",
+    "backups": "Backup",
+    "cloud-deleted": "Cancellato {0} record dal cloud",
+    "count-deletions": "eliminazioni",
+    "days": "{0} giorni",
+    "delete-all": "Elimina tutto",
+    "delete-all-data": "Elimina dati del dispositivo e cloud",
+    "delete-and-import": "Elimina e Importa",
+    "delete-backup": "Elimina File di Backup",
+    "delete-cloud-data": "elimina dati cloud",
+    "delete-local-data": "elimina i dati del dispositivo",
+    "deleted": "eliminato",
+    "do-full-sync": "Esegui sincronizzazione completa ora",
+    "import-overwrites-data": "Ripristinare o importare dati sovrascriverà tutti i dati locali",
+    "last-backup": "Ultimo Backup Dati: {0}",
+    "no-delete-cloud-records": "nessun record in cloud da eliminare",
+    "now": "fai il backup ora",
+    "please_wait": "...attendere prego",
+    "purge-oudated": "Rimuovi cancellazioni obsolete dal cloud",
+    "range": "mantieni i backup",
+    "really-delete--all-backups": "Eliminare veramente tutti i backup?",
+    "really-delete-all-data": "Eliminare davvero tutti i dati del dispositivo e del cloud?",
+    "really-delete-backup": "Eliminare davvero il backup?",
+    "really-delete-cloud-data": "Eliminare davvero i dati del cloud?",
+    "really-delete-local-data": "Eliminare davvero i dati del dispositivo?\nSe la sincronizzazione è attiva, i dati del cloud verranno recuperati dopo l'eliminazione.",
+    "really-sync-from-cloud": "Vuoi davvero sincronizzare tutto dal cloud al dispositivo?",
+    "really-sync-to-cloud": "Vuoi davvero sincronizzare tutto dal dispositivo al cloud?",
+    "requires-internet-syncing": "richiede internet/sincronizzazione",
+    "share-backup": "Condividi/Scarica file di backup",
+    "stats": "statistiche",
+    "sync-queue": "Tabella Sync",
+    "syncing-interrupted": "La sincronizzazione corrente è stata interrotta",
+    "syncing-tools": "Strumenti di Sincronizzazione",
+    "upserts": "inserimenti/upsert",
+    "use-file-browser": "Importa usando il browser dei file",
+    "user-prefs": "Preferenze-Utente"
+  }
+}

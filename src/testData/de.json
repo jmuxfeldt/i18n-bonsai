@@ -1,0 +1,53 @@
+{
+  "account": {
+    "login": "Anmeldung",
+    "login-apple": "Apple-Konto Anmeldung",
+    "password": "Passwort",
+    "username": "Benutzername"
+  },
+  "applestore": {
+    "annual": "Premium-Jahresabo",
+    "annual-descr": "Premium-Funktionen für 1 Jahr freischalten",
+    "monthly": "Premium Monatsabo",
+    "monthly-desc": "Premium-Funktionen für 1 Monat freischalten"
+  },
+  "backups": {
+    "autobackups": "Sicherungen (zum Wiederherstellen klicken)",
+    "backup-device-data": "Daten des Backup-Geräts",
+    "backups": "Backups",
+    "cloud-deleted": "{0} Datensätze aus der Cloud gelöscht",
+    "count-deletions": "Löschungen",
+    "days": "{0} Tage",
+    "delete-all": "Alle löschen",
+    "delete-all-data": "Gerät und Cloud-Daten löschen",
+    "delete-and-import": "Löschen und Importieren",
+    "delete-backup": "Sicherungsdatei löschen",
+    "delete-cloud-data": "Clouddaten löschen",
+    "delete-local-data": "Gerätedaten löschen",
+    "deleted": "gelöscht",
+    "do-full-sync": "Vollständige Synchronisation sofort durchführen",
+    "import-overwrites-data": "Wiederherstellung oder Import von Daten überschreibt alle lokalen Daten",
+    "last-backup": "Letzte Datensicherung: {0}",
+    "no-delete-cloud-records": "Keine Datensätze in der Cloud zum Löschen",
+    "now": "Jetzt sichern",
+    "please_wait": "... bitte warten",
+    "purge-oudated": "Veraltete Löschungen aus der Cloud entfernen",
+    "range": "Sicherungen aufbewahren",
+    "really-delete--all-backups": "Wirklich alle Backups löschen?",
+    "really-delete-all-data": "Wirklich alle Geräte- und Cloud-Daten löschen?",
+    "really-delete-backup": "Wirklich Backup löschen?",
+    "really-delete-cloud-data": "Cloud-Daten wirklich löschen?",
+    "really-delete-local-data": "Wirklich Gerätedaten löschen?\nBei aktivierter Synchronisation werden nach dem Löschen Cloud-Daten abgerufen.",
+    "really-sync-from-cloud": "Wirklich alles vom Cloud auf das Gerät synchronisieren?",
+    "really-sync-to-cloud": "Wirklich alles vom Gerät in die Cloud synchronisieren?",
+    "requires-internet-syncing": "erfordert Internet/Synchronisation",
+    "share-backup": "Sicherungsdatei teilen/herunterladen",
+    "stats": "Statistiken",
+    "sync-queue": "Synchronisationstabelle",
+    "syncing-interrupted": "Der aktuelle Sync wurde unterbrochen",
+    "syncing-tools": "Synchronisations-Tools",
+    "upserts": "einfügen/aktualisieren",
+    "use-file-browser": "Import über Dateibrowser",
+    "user-prefs": "Benutzereinstellungen"
+  }
+}

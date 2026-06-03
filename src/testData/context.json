@@ -1,0 +1,14 @@
+{
+  "account": {
+    "login-apple": "As in: login to my apple account"
+  },
+  "backups": {
+    "backup-device-data": "backups",
+    "delete-all": "Delete all backups",
+    "do-full-sync": "Now, as in immediately",
+    "import-overwrites-data": "As short as possible",
+    "no-delete-cloud-records": "short, informal",
+    "range": "keep backups for 20 days",
+    "sync-queue": "Database table for synchronisation"
+  }
+}

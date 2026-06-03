@@ -1,0 +1,53 @@
+{
+  "account": {
+    "login": "login",
+    "login-apple": "Apple Account Login",
+    "password": "password",
+    "username": "user name"
+  },
+  "applestore": {
+    "annual": "Premium Annual Subscription",
+    "annual-descr": "Unlock premium features for 1 year",
+    "monthly": "Premium Monthly Subscription",
+    "monthly-desc": "Unlock premium features for 1 month"
+  },
+  "backups": {
+    "autobackups": "Backups (click to restore)",
+    "backup-device-data": "Backup Device Data",
+    "backups": "Backups",
+    "cloud-deleted": "Deleted {0} records from cloud",
+    "count-deletions": "deletions",
+    "days": "{0} days",
+    "delete-all": "Delete all",
+    "delete-all-data": "Delete device and cloud data",
+    "delete-and-import": "Delete and Import",
+    "delete-backup": "Delete Backup File",
+    "delete-cloud-data": "Delete cloud data",
+    "delete-local-data": "Delete device data",
+    "deleted": "deleted",
+    "do-full-sync": "Perform Full Sync Now",
+    "import-overwrites-data": "Restoring or importing  data will overwrite all local data",
+    "last-backup": "Last Backup: {0}",
+    "no-delete-cloud-records": "no records in cloud to delete",
+    "now": "backup now",
+    "please_wait": "... please wait",
+    "purge-oudated": "Remove outdated deletions from cloud",
+    "range": "keep backups",
+    "really-delete--all-backups": "Really delete all backups?",
+    "really-delete-all-data": "Really delete all device and cloud data?",
+    "really-delete-backup": "Really delete backup?",
+    "really-delete-cloud-data": "Really delete cloud data?",
+    "really-delete-local-data": "Really delete device data?\nIf Syncing is on, cloud data will be fetched after deleting.",
+    "really-sync-from-cloud": "Really sync all from cloud to device?",
+    "really-sync-to-cloud": "Really sync all from device to cloud?",
+    "requires-internet-syncing": "requires internet/syncing",
+    "share-backup": "Share/Download backup file",
+    "stats": "stats",
+    "sync-queue": "Sync Table",
+    "syncing-interrupted": "Current sync was interrupted",
+    "syncing-tools": "Syncing Tools",
+    "upserts": "upserts",
+    "use-file-browser": "Import using file browser",
+    "user-prefs": "User-Prefs"
+  }
+}

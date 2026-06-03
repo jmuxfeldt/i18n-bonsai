@@ -1,0 +1,53 @@
+{
+  "account": {
+    "login": "connexion",
+    "login-apple": "Connexion Compte Apple",
+    "password": "mot de passe",
+    "username": "nom d'utilisateur"
+  },
+  "applestore": {
+    "annual": "Abonnement Annuel Premium",
+    "annual-descr": "Fonctionnalités premium débloquées 1 an",
+    "monthly": "Abonnement Premium Mensuel",
+    "monthly-desc": "Fonctionnalités premium débloquées  1 mois"
+  },
+  "backups": {
+    "autobackups": "Sauvegardes (cliquez pour restaurer)",
+    "backup-device-data": "Sauvegarde des données de l'appareil",
+    "backups": "Sauvegardes",
+    "cloud-deleted": "Supprimé {0} enregistrements du cloud",
+    "count-deletions": "suppressions",
+    "days": "{0} jours",
+    "delete-all": "Supprimer tout",
+    "delete-all-data": "Supprimer les données de l'appareil et du cloud",
+    "delete-and-import": "Supprimer et Importer",
+    "delete-backup": "Supprimer le fichier de sauvegarde",
+    "delete-cloud-data": "supprimer les données du cloud",
+    "delete-local-data": "supprimer les données de l'appareil",
+    "deleted": "supprimé",
+    "do-full-sync": "Effectuer une synchronisation complète maintenant",
+    "import-overwrites-data": "La restauration ou l'importation de données écrasera toutes les données locales",
+    "last-backup": "Dernière sauvegarde des données : {0}",
+    "no-delete-cloud-records": "aucun enregistrement dans le cloud à supprimer",
+    "now": "sauvegarde maintenant",
+    "please_wait": "... veuillez patienter",
+    "purge-oudated": "Supprimer les suppressions obsolètes du cloud",
+    "range": "conservez les sauvegardes",
+    "really-delete--all-backups": "Vraiment supprimer toutes les sauvegardes?",
+    "really-delete-all-data": "Vraiment supprimer toutes les données de l'appareil et du cloud?",
+    "really-delete-backup": "Vraiment supprimer la sauvegarde?",
+    "really-delete-cloud-data": "Vraiment supprimer les données du cloud ?",
+    "really-delete-local-data": "Vraiment supprimer les données de l'appareil ?\nSi la synchronisation est activée, les données du cloud seront récupérées après la suppression.",
+    "really-sync-from-cloud": "Vraiment synchroniser tout du cloud vers l'appareil?",
+    "really-sync-to-cloud": "Vraiment synchroniser tout de l'appareil vers le cloud?",
+    "requires-internet-syncing": "nécessite internet/synchronisation",
+    "share-backup": "Partager/Télécharger le fichier de sauvegarde",
+    "stats": "statistiques",
+    "sync-queue": "Table de Synchronisation",
+    "syncing-interrupted": "La synchronisation actuelle a été interrompue",
+    "syncing-tools": "Outils de Synchronisation",
+    "upserts": "insertions/mises à jour",
+    "use-file-browser": "Importer via l'explorateur de fichiers",
+    "user-prefs": "Préférences-utilisateur"
+  }
+}

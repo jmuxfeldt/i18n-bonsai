@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+
+  <!-- ── Border circle ─────────────────────────────────── -->
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#2D6A4F" stroke-width="6"/>
+
+  <!-- ── Tree content scaled to 86% for breathing room ─── -->
+  <g transform="translate(100,100) scale(0.86) translate(-100,-100)">
+
+  <!-- ── Trunk — flat gray spline ───────────────────────── -->
+  <path d="M 100 162 C 101 148, 104 134, 97 120 C 91 108, 91 98, 96 88 C 101 78, 100 68, 100 58"
+        stroke="#2D6A4F" stroke-width="8" fill="none"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- ── Branches — fork smoothly from trunk, then sweep out -->
+  <path d="M 97 122 C 101 116, 66 112, 36 102"
+        stroke="#2D6A4F" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M 93 104 C 89 97, 126 90, 154 80"
+        stroke="#2D6A4F" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M 96 88  C 99  82, 68  76, 46  69"
+        stroke="#2D6A4F" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- ── Foliage — lower-left pad ─────────────────────── -->
+  <ellipse cx="36"  cy="102" rx="22" ry="15" fill="#2D6A4F"/>
+  <ellipse cx="38"  cy="97"  rx="16" ry="11" fill="#2D6A4F"/>
+  <ellipse cx="40"  cy="93"  rx="9"  ry="7"  fill="#2D6A4F"/>
+
+  <!-- ── Foliage — right pad ───────────────────────────── -->
+  <ellipse cx="154" cy="80"  rx="20" ry="14" fill="#2D6A4F"/>
+  <ellipse cx="152" cy="75"  rx="14" ry="10" fill="#2D6A4F"/>
+  <ellipse cx="150" cy="71"  rx="8"  ry="6"  fill="#2D6A4F"/>
+
+  <!-- ── Foliage — upper-left pad ─────────────────────── -->
+  <ellipse cx="46"  cy="69"  rx="18" ry="12" fill="#2D6A4F"/>
+  <ellipse cx="48"  cy="65"  rx="12" ry="8"  fill="#2D6A4F"/>
+  <ellipse cx="50"  cy="61"  rx="7"  ry="5"  fill="#2D6A4F"/>
+
+  <!-- ── Foliage — apex crown ──────────────────────────── -->
+  <ellipse cx="100" cy="50"  rx="27" ry="20" fill="#2D6A4F"/>
+  <ellipse cx="99"  cy="43"  rx="20" ry="15" fill="#2D6A4F"/>
+  <ellipse cx="100" cy="37"  rx="13" ry="10" fill="#2D6A4F"/>
+  <ellipse cx="101" cy="31"  rx="7"  ry="5"  fill="#2D6A4F"/>
+  <ellipse cx="100" cy="27"  rx="3"  ry="3"  fill="#2D6A4F"/>
+
+  <!-- ── Translate icon — under right branch ───────────── -->
+  <g transform="translate(112,110) scale(2.0)" fill="#2D6A4F">
+    <path d="M12.87,15.07L10.33,12.56L10.36,12.53C12.1,10.59 13.34,8.36 14.07,6H17V4H10V2H8V4H1V6H12.17C11.5,7.92 10.44,9.75 9,11.35C8.07,10.32 7.3,9.19 6.69,8H4.69C5.42,9.63 6.42,11.17 7.67,12.56L2.58,17.58L4,19L9,14L12.11,17.11L12.87,15.07M18.5,10H16.5L12,22H14L15.12,19H19.87L21,22H23L18.5,10M15.88,17L17.5,12.67L19.12,17H15.88Z"/>
+  </g>
+
+  </g><!-- end tree scale group -->
+
+</svg>

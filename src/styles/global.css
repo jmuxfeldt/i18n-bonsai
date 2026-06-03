@@ -1,0 +1,36 @@
+:root {
+  color-scheme: dark;
+  --color-border: rgba(0, 0, 0, 0.12);
+  --color-bg-subtle: rgba(0, 0, 0, 0.05);
+  --color-bg-focus: rgba(0, 0, 0, 0.04);
+  --color-surface: #ffffff;
+  --color-primary: #2D6A4F;
+  --color-primary-faint: rgba(45, 106, 79, 0.2);
+  --color-text: #1a1a1a;
+  --color-text-muted: rgba(0, 0, 0, 0.55);
+}
+
+html.dark {
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-bg-subtle: rgba(255, 255, 255, 0.05);
+  --color-bg-focus: rgba(255, 255, 255, 0.04);
+  --color-surface: #1f2429;
+  --color-primary: #52B788;
+  --color-primary-faint: rgba(82, 183, 136, 0.2);
+  --color-text: rgba(255, 255, 255, 0.82);
+  --color-text-muted: rgba(255, 255, 255, 0.45);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-size: 16px;
+  background-color: #222222;
+  color: var(--color-text);
+
+}
+.app-main{
+  overflow: hidden!important
+}

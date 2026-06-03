@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>i18n Bonsai — Tending your i18n files</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bonsai: {
+              50:  '#f0faf4',
+              100: '#d8f2e3',
+              200: '#b0e4c7',
+              300: '#7dcda4',
+              400: '#4db07e',
+              500: '#2D6A4F',
+              600: '#245940',
+              700: '#1d4833',
+              800: '#163728',
+              900: '#0f2820',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .step-number {
+      background: linear-gradient(135deg, #2D6A4F, #4db07e);
+      color: white;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.875rem;
+      flex-shrink: 0;
+    }
+    .nav-link {
+      position: relative;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #2D6A4F;
+      transition: width 0.2s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+  </style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+
+  <!-- ── Navigation ───────────────────────────────────────── -->
+  <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100 shadow-sm">
+    <div class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <img src="logo.svg" alt="i18n Bonsai logo" class="w-9 h-9" />
+        <div class="leading-tight">
+          <div class="font-semibold text-gray-900 text-sm">i18n Bonsai</div>
+          <div class="text-[0.65rem] text-gray-400 italic">tending your i18n files</div>
+        </div>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-6 text-sm text-gray-600">
+        <a href="#features" class="nav-link hover:text-bonsai-500 transition-colors">Features</a>
+        <a href="#how-it-works" class="nav-link hover:text-bonsai-500 transition-colors">How it works</a>
+        <a href="#docs" class="nav-link hover:text-bonsai-500 transition-colors">Docs</a>
+        <a href="#doc-troubleshooting" class="nav-link hover:text-bonsai-500 transition-colors">Troubleshooting</a>
+        <a href="#support" class="nav-link hover:text-bonsai-500 transition-colors">Donate</a>
+        <a href="https://github.com/jmuxfeldt/i18n-bonsai/releases" target="_blank" class="nav-link hover:text-bonsai-500 transition-colors">Releases</a>
+        <a href="https://github.com/jmuxfeldt/i18n-bonsai" target="_blank"
+           class="flex items-center gap-1.5 bg-bonsai-500 text-white px-3 py-1.5 rounded-md text-xs font-medium hover:bg-bonsai-600 transition-colors">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+
+      <!-- Hamburger button (mobile) -->
+      <button id="nav-toggle" aria-label="Toggle menu" aria-expanded="false"
+              class="md:hidden p-2 rounded-md text-gray-600 hover:text-bonsai-500 hover:bg-bonsai-50 transition-colors">
+        <svg id="icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white/95 px-6 py-4 space-y-1 text-sm text-gray-600">
+      <a href="#features"          class="block py-2 hover:text-bonsai-500 transition-colors" onclick="closeMobileMenu()">Features</a>
+      <a href="#how-it-works"      class="block py-2 hover:text-bonsai-500 transition-colors" onclick="closeMobileMenu()">How it works</a>
+      <a href="#docs"              class="block py-2 hover:text-bonsai-500 transition-colors" onclick="closeMobileMenu()">Docs</a>
+      <a href="#doc-troubleshooting" class="block py-2 hover:text-bonsai-500 transition-colors" onclick="closeMobileMenu()">Troubleshooting</a>
+      <a href="#support"           class="block py-2 hover:text-bonsai-500 transition-colors" onclick="closeMobileMenu()">Donate</a>
+      <a href="https://github.com/jmuxfeldt/i18n-bonsai/releases" target="_blank"
+         class="block py-2 hover:text-bonsai-500 transition-colors">Releases</a>
+      <a href="https://github.com/jmuxfeldt/i18n-bonsai" target="_blank"
+         class="inline-flex items-center gap-1.5 mt-2 bg-bonsai-500 text-white px-3 py-2 rounded-md text-xs font-medium hover:bg-bonsai-600 transition-colors">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
+        GitHub
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    function closeMobileMenu() {
+      document.getElementById('mobile-menu').classList.add('hidden');
+      document.getElementById('icon-open').classList.remove('hidden');
+      document.getElementById('icon-close').classList.add('hidden');
+      document.getElementById('nav-toggle').setAttribute('aria-expanded', 'false');
+    }
+    document.getElementById('nav-toggle').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      const isOpen = !menu.classList.contains('hidden');
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        menu.classList.remove('hidden');
+        document.getElementById('icon-open').classList.add('hidden');
+        document.getElementById('icon-close').classList.remove('hidden');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  </script>
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <section id="top" class="bg-gradient-to-b from-bonsai-50 to-white pt-20 pb-16 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <img src="logo.svg" alt="i18n Bonsai" class="w-24 h-24 mx-auto mb-6 drop-shadow-md" />
+      <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+        i18n <span class="text-bonsai-500">Bonsai</span>
+      </h1>
+      <p class="text-xl text-gray-500 italic mb-6 font-light">tending your i18n files</p>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+        A desktop app for editing and AI-translating your JSON localisation files.
+        See all your locales side-by-side, translate missing strings with one click,
+        and keep translator context right next to each key.
+      </p>
+      <div class="flex items-center justify-center gap-4 flex-wrap">
+        <a href="#docs"
+           class="inline-flex items-center gap-2 bg-bonsai-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-bonsai-600 transition-colors shadow-sm">
+          Get Started
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="#how-it-works"
+           class="inline-flex items-center gap-2 border border-bonsai-300 text-bonsai-600 px-6 py-3 rounded-lg font-semibold hover:bg-bonsai-50 transition-colors">
+          See how it works
+        </a>
+        <a href="https://github.com/jmuxfeldt/i18n-bonsai/releases/latest" target="_blank"
+           class="inline-flex items-center gap-2 border border-gray-200 text-gray-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Download
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Hero screenshot ───────────────────────────────────── -->
+  <section class="max-w-5xl mx-auto px-6 -mt-2 mb-16">
+    <div class="rounded-xl shadow-lg overflow-hidden">
+      <img src="ScreenshotMain.jpg" alt="i18n Bonsai main translation editor" class="w-full h-auto block" />
+    </div>
+  </section>
+
+  <!-- ── Features ─────────────────────────────────────────── -->
+  <section id="features" class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-3">Features</h2>
+    <p class="text-center text-gray-500 mb-12">Everything you need to keep your translations tidy</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-10 h-10 rounded-lg bg-bonsai-100 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-bonsai-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 10h18M3 14h18M10 3v18M14 3v18"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Side-by-side grid</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">
+          All locales displayed in a single scrollable grid. Spot missing translations instantly and edit any cell inline.
+        </p>
+      </div>
+
+      <div class="rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-10 h-10 rounded-lg bg-bonsai-100 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-bonsai-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">AI translation</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">
+          Translate missing strings with one click using OpenAI GPT. Fill an entire locale column or just a single row.
+        </p>
+      </div>
+
+      <div class="rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-10 h-10 rounded-lg bg-bonsai-100 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-bonsai-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">File groups</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">
+          Open any file in a group and all sibling locale files load automatically — <code class="bg-gray-100 px-1 rounded text-xs">admin.en.json</code>, <code class="bg-gray-100 px-1 rounded text-xs">admin.de.json</code>, etc.
+        </p>
+      </div>
+
+      <div class="rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-10 h-10 rounded-lg bg-bonsai-100 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-bonsai-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Per-key context</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">
+          Add translator hints to any key via a <code class="bg-gray-100 px-1 rounded text-xs">context.json</code> sidecar file. Context is sent to the AI to improve translation quality.
+        </p>
+      </div>
+
+      <div class="rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-10 h-10 rounded-lg bg-bonsai-100 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-bonsai-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Search &amp; filter</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">
+          Full-text search across keys and values. Toggle a "show untranslated only" filter to focus on what still needs work.
+        </p>
+      </div>
+
+      <div class="rounded-xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-10 h-10 rounded-lg bg-bonsai-100 flex items-center justify-center mb-4">
+          <svg class="w-5 h-5 text-bonsai-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-gray-900 mb-2">Dark mode</h3>
+        <p class="text-sm text-gray-500 leading-relaxed">
+          Full dark/light theme support. Your preference is saved automatically between sessions.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── How it works ──────────────────────────────────────── -->
+  <section id="how-it-works" class="bg-bonsai-50 py-16 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-3">How it works</h2>
+      <p class="text-center text-gray-500 mb-12">From zero to translated in three steps</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="text-center">
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <div class="step-number">1</div>
+            <h3 class="font-semibold text-gray-900">Open your files</h3>
+          </div>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            Click <strong>Select Source</strong> and pick any locale file. All related locale files in the same directory load automatically.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <div class="step-number">2</div>
+            <h3 class="font-semibold text-gray-900">Edit &amp; translate</h3>
+          </div>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            Edit cells directly in the grid, or click <strong>Translate ↓</strong>
+            on any column to fill all missing translations with AI.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="flex items-center justify-center gap-2 mb-2">
+            <div class="step-number">3</div>
+            <h3 class="font-semibold text-gray-900">Save all locales</h3>
+          </div>
+          <p class="text-sm text-gray-500 leading-relaxed">
+            Click <strong>Save All Locales</strong> to write every locale file back to disk in one shot.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Support ───────────────────────────────────────────── -->
+  <section id="support" class="max-w-5xl mx-auto px-6 py-16">
+    <div class="rounded-2xl bg-gradient-to-br from-bonsai-50 to-white border border-bonsai-100 shadow-sm p-10 text-center">
+      <div class="w-12 h-12 rounded-xl bg-bonsai-100 flex items-center justify-center mx-auto mb-5">
+        <svg class="w-6 h-6 text-bonsai-500" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+      <h2 class="text-3xl font-bold text-gray-900 mb-3">Support this project</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto mb-4 leading-relaxed">
+        i18n Bonsai is free and open source, built and maintained in my spare time.
+        So if this app saves you time, or you'd simply like to see it keep growing,
+        please consider chipping in toward its continued development. Every contribution,
+        however small, means a lot.
+      </p>
+      <p class="text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+        I'm also <strong>available for hire</strong> — if you'd like help with a project,
+        feel free to
+        <a href="https://www.glyph.de" target="_blank" class="text-bonsai-600 font-medium hover:text-bonsai-500 underline">get in touch</a>.
+      </p>
+      <div class="flex justify-center">
+        <script src="https://liberapay.com/jmuxf/widgets/button.js"></script>
+        <noscript><a href="https://liberapay.com/jmuxf/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
+      </div>
+      <p>I am happy to consider feature requests!</p>
+      <p class="text-sm text-gray-400 mt-6">Thank you! 🙏</p>
+    </div>
+  </section>
+
+  <!-- ── Docs ──────────────────────────────────────────────── -->
+  <section id="docs" class="max-w-5xl mx-auto px-6 py-16">
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-3">Documentation</h2>
+    <p class="text-center text-gray-500 mb-12">Everything you need to know</p>
+
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+      <!-- Sidebar nav -->
+      <aside class="hidden lg:block">
+        <nav class="sticky top-20 space-y-1 text-sm">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">On this page</p>
+          <a href="#doc-setup" class="block py-1.5 px-3 rounded-md text-gray-600 hover:bg-bonsai-50 hover:text-bonsai-600 transition-colors">Setup</a>
+          <a href="#doc-opening" class="block py-1.5 px-3 rounded-md text-gray-600 hover:bg-bonsai-50 hover:text-bonsai-600 transition-colors">Opening files</a>
+          <a href="#doc-editing" class="block py-1.5 px-3 rounded-md text-gray-600 hover:bg-bonsai-50 hover:text-bonsai-600 transition-colors">Editing translations</a>
+          <a href="#doc-ai" class="block py-1.5 px-3 rounded-md text-gray-600 hover:bg-bonsai-50 hover:text-bonsai-600 transition-colors">AI translation</a>
+          <a href="#doc-context" class="block py-1.5 px-3 rounded-md text-gray-600 hover:bg-bonsai-50 hover:text-bonsai-600 transition-colors">Context hints</a>
+          <a href="#doc-naming" class="block py-1.5 px-3 rounded-md text-gray-600 hover:bg-bonsai-50 hover:text-bonsai-600 transition-colors">File naming</a>
+          <a href="#doc-settings" class="block py-1.5 px-3 rounded-md text-gray-600 hover:bg-bonsai-50 hover:text-bonsai-600 transition-colors">Settings</a>
+          <a href="#doc-troubleshooting" class="block py-1.5 px-3 rounded-md text-gray-600 hover:bg-bonsai-50 hover:text-bonsai-600 transition-colors">Troubleshooting</a>
+        </nav>
+      </aside>
+
+      <!-- Docs content -->
+      <div class="lg:col-span-3 space-y-12">
+
+        <div id="doc-setup">
+          <h3 class="text-xl font-bold text-gray-900 mb-1 flex items-center gap-2">
+            <span class="w-1 h-5 bg-bonsai-400 rounded-full inline-block"></span>
+            Setup
+          </h3>
+          <div class="prose prose-sm max-w-none text-gray-600 space-y-3">
+            <p>Download the latest release for your platform from the GitLab releases page. i18n Bonsai runs as a standalone desktop app — no installation of Node.js or other runtimes required.</p>
+            <p>On first launch, go to <strong>Settings</strong> (the cog icon) and enter your <strong>OpenAI API key</strong>. This is only required if you want to use AI translation. The key is stored locally in your browser/app preferences and never sent anywhere other than OpenAI.</p>
+            <p>You can also set a <strong>global context</strong> — a free-text description of your app that is included in every translation prompt to improve quality. The primary language is determined automatically from the locale file you open.</p>
+          </div>
+        </div>
+
+        <div id="doc-opening">
+          <h3 class="text-xl font-bold text-gray-900 mb-1 flex items-center gap-2">
+            <span class="w-1 h-5 bg-bonsai-400 rounded-full inline-block"></span>
+            Opening files
+          </h3>
+          <div class="text-gray-600 space-y-3 text-sm leading-relaxed">
+            <p>Click <strong>Select Source</strong> to open a file picker. Choose any one of your locale JSON files — i18n Bonsai automatically loads all other locale files in the same directory alongside it.</p>
+            <p>For example, selecting <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">en.json</code> will also load <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">de.json</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">zh-CN.json</code>, and any other locale files present in that directory.</p>
+            <div class="bg-bonsai-50 border border-bonsai-200 rounded-lg p-3 text-bonsai-700 flex items-start gap-2">
+              <svg class="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span>i18n Bonsai remembers the last translation set you had open and restores it automatically on next launch — no need to re-select your files each time.</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="doc-editing">
+          <h3 class="text-xl font-bold text-gray-900 mb-1 flex items-center gap-2">
+            <span class="w-1 h-5 bg-bonsai-400 rounded-full inline-block"></span>
+            Editing translations
+          </h3>
+          <div class="text-gray-600 space-y-3 text-sm leading-relaxed">
+            <p>Click any cell in the grid to edit its value. The primary language column is displayed for reference.</p>
+            <div class="rounded-lg border border-gray-100 overflow-hidden">
+              <table class="w-full text-xs">
+                <thead class="bg-gray-50 text-gray-500 font-medium">
+                  <tr>
+                    <th class="px-3 py-2 text-left">Action</th>
+                    <th class="px-3 py-2 text-left">Where</th>
+                    <th class="px-3 py-2 text-left">Effect</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-50">
+                  <tr>
+                    <td class="px-3 py-2 font-medium">Translate Lang ↓</td>
+                    <td class="px-3 py-2">Column header</td>
+                    <td class="px-3 py-2">AI-fills all empty cells in that locale</td>
+                  </tr>
+                  <tr class="bg-gray-50/50">
+                    <td class="px-3 py-2 font-medium">Translate Row</td>
+                    <td class="px-3 py-2">Row action menu</td>
+                    <td class="px-3 py-2">Retranslates all non-primary locales for that key</td>
+                  </tr>
+                  <tr class="bg-gray-50/50">
+                    <td class="px-3 py-2 font-medium">Translate Item</td>
+                    <td class="px-3 py-2">Item action button</td>
+                    <td class="px-3 py-2">Retranslates individual item for that key</td>
+                  </tr>
+                  <tr>
+                    <td class="px-3 py-2 font-medium">Add Locale</td>
+                    <td class="px-3 py-2">Toolbar</td>
+                    <td class="px-3 py-2">Adds a new empty locale column</td>
+                  </tr>
+                  <tr>
+                    <td class="px-3 py-2 font-medium">Add Row</td>
+                    <td class="px-3 py-2">Row action menu</td>
+                    <td class="px-3 py-2">Adds a new i18n key and a (optional) translation context</td>
+                  </tr>
+                  <tr class="bg-gray-50/50">
+                    <td class="px-3 py-2 font-medium">Filter untranslated</td>
+                    <td class="px-3 py-2">Toolbar icon</td>
+                    <td class="px-3 py-2">Shows only rows with at least one empty value</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>When you are done, click <strong>Save All Locales</strong> to write all changes to disk. A confirmation dialog shows which files will be overwritten. Keys are automatically sorted alphabetically by key and sub-key on save, keeping your files tidy and diff-friendly.</p>
+          </div>
+        </div>
+
+        <div id="doc-ai">
+          <h3 class="text-xl font-bold text-gray-900 mb-1 flex items-center gap-2">
+            <span class="w-1 h-5 bg-bonsai-400 rounded-full inline-block"></span>
+            AI translation
+          </h3>
+          <div class="text-gray-600 space-y-3 text-sm leading-relaxed">
+            <p>i18n Bonsai calls the OpenAI Chat Completions API directly from the app. You choose the model in Settings (GPT-4o is the default).</p>
+            <p>Each translation request sends:</p>
+            <ul class="list-disc list-inside space-y-1 pl-2">
+              <li>The source language and target language</li>
+              <li>Your <strong>global context</strong> (set in Settings)</li>
+              <li>Any <strong>per-key context hint</strong> for that row</li>
+              <li>The source string to translate</li>
+            </ul>
+            <p>The <strong>Translate ↓</strong> button in the column header fills only <em>empty</em> cells — it never overwrites existing translations. Use the per-row translate button to force a re-translation of all locales for a specific key.</p>
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-3 text-amber-800">
+              <strong>Note:</strong> API calls are billed to your OpenAI account at standard rates. Translating large files with many keys can incur costs, especially with GPT-4.
+            </div>
+          </div>
+        </div>
+
+        <div id="doc-context">
+          <h3 class="text-xl font-bold text-gray-900 mb-1 flex items-center gap-2">
+            <span class="w-1 h-5 bg-bonsai-400 rounded-full inline-block"></span>
+            Context hints
+          </h3>
+          <div class="text-gray-600 space-y-3 text-sm leading-relaxed">
+            <p>For each translation key you can store a short hint that helps the AI understand what the string is used for. These hints are kept in a special <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">context.json</code> file that i18n Bonsai creates and manages automatically alongside your locale files.</p>
+            <p>When you translate a key, the per-key context from <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">context.json</code> is included in the prompt sent to the AI, improving translation accuracy for ambiguous or UI-specific strings.</p>
+          </div>
+        </div>
+
+        <div id="doc-naming">
+          <h3 class="text-xl font-bold text-gray-900 mb-1 flex items-center gap-2">
+            <span class="w-1 h-5 bg-bonsai-400 rounded-full inline-block"></span>
+            File naming convention
+          </h3>
+          <div class="text-gray-600 space-y-3 text-sm leading-relaxed">
+            <p>Locale files are named using the locale code as the filename: <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">en.json</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">de.json</code>, <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">zh-CN.json</code>, etc. All locale files live in the same directory.</p>
+            <p>Source or translation files must contain at least {}.</p>
+            <p>The only special file is <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">context.json</code>, which holds per-key translator hints and is handled separately by i18n Bonsai — it is not treated as a locale.</p>
+          </div>
+        </div>
+
+        <div id="doc-settings">
+          <h3 class="text-xl font-bold text-gray-900 mb-1 flex items-center gap-2">
+            <span class="w-1 h-5 bg-bonsai-400 rounded-full inline-block"></span>
+            Settings
+          </h3>
+          <div class="text-gray-600 space-y-3 text-sm leading-relaxed">
+            <p>Open Settings via the cog icon in the top-right corner.</p>
+            <div class="rounded-lg border border-gray-100 overflow-hidden">
+              <table class="w-full text-xs">
+                <thead class="bg-gray-50 text-gray-500 font-medium">
+                  <tr>
+                    <th class="px-3 py-2 text-left">Setting</th>
+                    <th class="px-3 py-2 text-left">Description</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-50">
+                  <tr>
+                    <td class="px-3 py-2 font-medium">ChatGPT API Key</td>
+                    <td class="px-3 py-2">Your OpenAI API key. Stored locally, never transmitted except to OpenAI.</td>
+                  </tr>
+                  <tr class="bg-gray-50/50">
+                    <td class="px-3 py-2 font-medium">Translation Model</td>
+                    <td class="px-3 py-2">The OpenAI model to use for translations (e.g. gpt-4o, gpt-4-turbo).</td>
+                  </tr>
+                  <tr>
+                    <td class="px-3 py-2 font-medium">Global Context</td>
+                    <td class="px-3 py-2">A description of your app included in every AI translation prompt. Helps the AI produce more accurate, in-context translations.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="doc-troubleshooting">
+          <h3 class="text-xl font-bold text-gray-900 mb-1 flex items-center gap-2">
+            <span class="w-1 h-5 bg-bonsai-400 rounded-full inline-block"></span>
+            Troubleshooting
+          </h3>
+          <div class="text-gray-600 space-y-6 text-sm leading-relaxed">
+
+            <div>
+
+            <p><br>Source or translation files must contain at least {}<br><br></p>
+            </div>
+          </div>
+          <div class="text-gray-600 space-y-6 text-sm leading-relaxed">
+
+            <div>
+              <h4 class="font-semibold text-gray-800 mb-1">A locale column is missing</h4>
+              <p>If a locale file exists on disk but does not appear as a column after loading, the file is likely empty. i18n Bonsai automatically loads empty locale files and adds them to the grid with no translations. If the column still does not appear, verify that the file name follows the expected naming convention (e.g. <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">de.json</code> for the <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">de</code> locale).</p>
+            </div>
+
+            <div>
+              <h4 class="font-semibold text-gray-800 mb-1">A locale file is silently ignored</h4>
+              <p>i18n Bonsai requires all JSON files to be well-formed. A file that contains invalid JSON (for example a missing closing brace, a trailing comma, or other syntax errors) is silently skipped during load — it will not appear as a column and its contents will not be loaded.</p>
+              <div class="bg-red-50 border border-red-200 rounded-lg p-3 text-red-800 mt-2">
+                <strong>Fix:</strong> Open the offending file in a text editor or JSON validator, correct the syntax, and reload the source in i18n Bonsai.
+              </div>
+            </div>
+
+            <div>
+              <h4 class="font-semibold text-gray-800 mb-1">The grid is empty after opening a directory</h4>
+              <p>This happens when the primary language file (determined by the file you selected) is empty or could not be read. i18n Bonsai will seed the grid with a placeholder <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">newKey</code> row so you can start adding content. If you intended to load existing translations, make sure the file you selected contains valid JSON.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────── -->
+  <footer class="border-t border-gray-100 bg-gray-50 py-10 px-6 mt-8">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+      <div class="flex items-center gap-2.5">
+        <img src="logo.svg" alt="" class="w-6 h-6 opacity-60" />
+        <span>i18n Bonsai</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="https://github.com/jmuxfeldt/i18n-bonsai" target="_blank"
+           class="hover:text-bonsai-500 transition-colors">GitHub</a>
+        <a href="https://github.com/jmuxfeldt/i18n-bonsai/releases" target="_blank"
+           class="hover:text-bonsai-500 transition-colors">Releases</a>
+        <a href="#docs" class="hover:text-bonsai-500 transition-colors">Docs</a>
+      </div>
+      <div>Built with Rust • Tauri · Vue 3 · Native UI </div>
+    </div>
+  </footer>
+
+
+</body>
+</html>
