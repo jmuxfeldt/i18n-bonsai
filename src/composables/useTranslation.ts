@@ -3,12 +3,10 @@ import { useLocalprefs } from '@/stores/localprefs'
 import { useTranslationFiles, globalContext, type TableRow } from './useTranslationFiles'
 
 export const OPENAI_MODELS = [
-  { value: 'gpt-4o', label: 'GPT-4o' },
-  { value: 'gpt-4o-mini', label: 'GPT-4o Mini' },
-  { value: 'gpt-4-turbo', label: 'GPT-4 Turbo' },
-  { value: 'gpt-4', label: 'GPT-4' },
-  { value: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo' },
-]
+  { value: "gpt-5.1", label: "GPT-5.1" },
+  { value: "gpt-5.4", label: "GPT-5.4" },
+  { value: "gpt-5.4-mini", label: "GPT-5.4-mini" },
+];
 
 // Only these models support response_format: { type: 'json_object' }
 const JSON_MODE_MODELS = new Set(['gpt-4o', 'gpt-4o-mini', 'gpt-4-turbo', 'gpt-3.5-turbo'])

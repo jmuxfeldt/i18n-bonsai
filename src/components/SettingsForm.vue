@@ -38,7 +38,7 @@
       @update:value="localprefs.setTranslationModel"
     )
     NAlert.mt(type="warning" :show-icon="true")
-      | API calls are billed to your OpenAI account at standard rates. Translating large files with many keys can incur costs, especially with GPT-4.
+      | API calls are billed to your OpenAI account at standard rates. Translating large files with many keys can incur costs, especially with GPT-5.4.
 
 NModal(v-model:show="showResetDialog" :mask-closable="true" @keydown.enter="resetToDefault")
   NCard(style="width:420px" :bordered="false" size="small")
