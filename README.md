@@ -71,3 +71,36 @@ npm run tauri:build
 ```
 
 Output is written to `src-tauri/target/release/bundle/`.
+
+
+## Publishing a DMG on GitHub
+
+Build the app (see above). The DMG is written to `src-tauri/target/release/bundle/dmg/`
+(for a universal build: `src-tauri/target/universal-apple-darwin/release/bundle/dmg/`).
+
+### Manually (in the browser)
+
+No tools needed beyond the built DMG.
+
+1. Open the repo on GitHub and click **Releases**.
+2. Click **Draft a new release** (or the pencil icon to edit an existing release).
+3. Choose or create a tag, e.g. `v0.1.0`, and add a title.
+4. Drag the `.dmg` into the "Attach binaries" box.
+5. Click **Publish release** (or **Update release**).
+
+### With the GitHub CLI
+
+```bash
+brew install gh
+gh auth login
+
+# New release
+gh release create v0.1.0 src-tauri/target/release/bundle/dmg/*.dmg --title "v0.1.0"
+
+# Add to an existing release (--clobber replaces a file with the same name)
+gh release upload v0.1.0 src-tauri/target/release/bundle/dmg/*.dmg
+```
+
+To open the output folder in Finder: `open src-tauri/target/release/bundle/dmg/`
+
+Note: unsigned / un-notarized apps trigger a "damaged app" or "unidentified developer" warning on other Macs.
