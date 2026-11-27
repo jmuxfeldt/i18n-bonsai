@@ -38,7 +38,10 @@
       @update:value="localprefs.setTranslationModel"
     )
     NAlert.mt(type="warning" :show-icon="true")
-      | API calls are billed to your OpenAI account at standard rates. Translating large files with many keys can incur costs, especially with GPT-5.4.
+      | Please check the current prices before you decide on a model.
+    NAlert.mt(type="warning" :show-icon="true")
+      | API calls are billed to your OpenAI account at standard rates. Translating large files with many keys can incur costs, especially with stronger models.
+
 
 NModal(v-model:show="showResetDialog" :mask-closable="true" @keydown.enter="resetToDefault")
   NCard(style="width:420px" :bordered="false" size="small")
@@ -51,27 +54,30 @@ NModal(v-model:show="showResetDialog" :mask-closable="true" @keydown.enter="rese
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { NInput, NSelect, NAlert, NModal, NCard, NButton } from 'naive-ui'
-import { useLocalprefs } from '@/stores/localprefs'
-import { globalContext, DEFAULT_GLOBAL_CONTEXT } from '@/composables/useTranslationFiles'
-import { OPENAI_MODELS } from '@/composables/useTranslation'
+import { ref } from "vue";
+import { NInput, NSelect, NAlert, NModal, NCard, NButton } from "naive-ui";
+import { useLocalprefs } from "@/stores/localprefs";
+import {
+  globalContext,
+  DEFAULT_GLOBAL_CONTEXT,
+} from "@/composables/useTranslationFiles";
+import { OPENAI_MODELS } from "@/composables/useTranslation";
 
-const localprefs = useLocalprefs()
+const localprefs = useLocalprefs();
 
-const modelItems = OPENAI_MODELS
-const showPassword = ref(false)
-const apiKey = ref(localprefs.chatGptApiKey)
-const showResetDialog = ref(false)
+const modelItems = OPENAI_MODELS;
+const showPassword = ref(false);
+const apiKey = ref(localprefs.chatGptApiKey);
+const showResetDialog = ref(false);
 
 const saveApiKey = () => {
-  localprefs.chatGptApiKey = apiKey.value
-}
+  localprefs.chatGptApiKey = apiKey.value;
+};
 
 const resetToDefault = () => {
-  globalContext.value = DEFAULT_GLOBAL_CONTEXT
-  showResetDialog.value = false
-}
+  globalContext.value = DEFAULT_GLOBAL_CONTEXT;
+  showResetDialog.value = false;
+};
 </script>
 
 <style scoped lang="sass">

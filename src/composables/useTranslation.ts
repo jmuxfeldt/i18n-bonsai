@@ -3,9 +3,9 @@ import { useLocalprefs } from '@/stores/localprefs'
 import { useTranslationFiles, globalContext, type TableRow } from './useTranslationFiles'
 
 export const OPENAI_MODELS = [
-  { value: "gpt-5.1", label: "GPT-5.1" },
-  { value: "gpt-5.4", label: "GPT-5.4" },
-  { value: "gpt-5.4-mini", label: "GPT-5.4-mini" },
+  { value: "gpt-5.1", label: "GPT-5.1 (budget)" },
+  { value: "gpt-5.4", label: "GPT-5.4 (more expensive)" },
+  { value: "gpt-6.2-sol", label: "GPT-6.2 Sol (best translation)" },
 ];
 
 // Only these models support response_format: { type: 'json_object' }
@@ -34,8 +34,7 @@ export function useTranslation() {
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localprefs.chatGptApiKey}` },
         body: JSON.stringify({
           model: localprefs.translationModel,
-          messages: [{ role: 'user', content: prompt }],
-          temperature: 0.3
+          messages: [{ role: 'user', content: prompt }]
         })
       })
 
