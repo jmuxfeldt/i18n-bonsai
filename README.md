@@ -95,10 +95,10 @@ brew install gh
 gh auth login
 
 # New release
-gh release create v0.1.0 src-tauri/target/release/bundle/dmg/*.dmg --title "v0.1.0"
+gh release create v1.0.5 src-tauri/target/release/bundle/dmg/*.dmg --title "v1.0.5"
 
 # Add to an existing release (--clobber replaces a file with the same name)
-gh release upload v0.1.0 src-tauri/target/release/bundle/dmg/*.dmg
+gh release upload v1.0.5 src-tauri/target/release/bundle/dmg/*.dmg --clobber
 ```
 
 To open the output folder in Finder: `open src-tauri/target/release/bundle/dmg/`
